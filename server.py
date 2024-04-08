@@ -5,7 +5,7 @@ import datetime
 import time
 import atexit
 from transfer import Transfer
-host = "26.65.98.144"
+
 class Server:
     def __init__(self, addr):
         self.clients = {}
@@ -14,7 +14,7 @@ class Server:
 
     def run(self):
         self.s = socket.socket()
-        self.s.bind(host, 25565)
+        self.s.bind(self.addr)
         self.s.listen()
         self.running = True
         print(f"Server started on {self.addr}")
@@ -64,7 +64,7 @@ class Server:
             threading.Thread(target=self.handleClient, daemon=True, 
                 args=(conn, addr)).start()
             print(f"Handling connection on {addr[0]}:{addr[1]}")
-
+host = "26.65.98.144"
 def consoleMessage():
     while True:
         msg = input()
