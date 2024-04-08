@@ -64,7 +64,7 @@ class Server:
             threading.Thread(target=self.handleClient, daemon=True, 
                 args=(conn, addr)).start()
             print(f"Handling connection on {addr[0]}:{addr[1]}")
-
+host = "26.65.98.144"
 def consoleMessage():
     while True:
         msg = input()
@@ -73,6 +73,6 @@ def consoleMessage():
             server.sendAll(data)
 
 if __name__ == "__main__":
-    server = Server((socket.gethostbyname(socket.gethostname()), 25565))
+    server = Server((host, 25565))
     #threading.Thread(target=consoleMessage, daemon=True).start() #buggy
     server.run()
